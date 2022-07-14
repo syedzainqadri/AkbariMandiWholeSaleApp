@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "693579964063",
+    "project_id": "akbarimandiwholesaleapp",
+    "storage_bucket": "akbarimandiwholesaleapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693579964063:android:3756273724051da2dd0caa",
+        "android_client_info": {
+          "package_name": "amo.ewiglife.wholesale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693579964063-l4ccsaeqvah73h2q865tscr8fejafag6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "amo.ewiglife.wholesale",
+            "certificate_hash": "4be4901c78d349d2b15f49b69585bb611c9cbe3e"
+          }
+        },
+        {
+          "client_id": "693579964063-235f57ug1j02hlbettbdp7rbl5bjnla3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_o5K1UlBL7VLjMIdpG8vYdcOdb1mIPes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693579964063-235f57ug1j02hlbettbdp7rbl5bjnla3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
