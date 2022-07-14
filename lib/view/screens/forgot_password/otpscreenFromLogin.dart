@@ -189,6 +189,7 @@ class _OtpScreenFromLoginState extends State<OtpScreenFromLogin> {
                       MaterialPageRoute(builder: (context) => MenuScreen()),
                       (route) => false);
                 } else {
+                  Future.delayed(Duration(seconds: 30));
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text('Please Try Again In 5 Min',
                           style: TextStyle(color: Colors.white)),

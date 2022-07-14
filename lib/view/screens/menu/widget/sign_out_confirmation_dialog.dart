@@ -12,6 +12,7 @@ import 'package:akbarimandiwholesale/utill/styles.dart';
 import 'package:provider/provider.dart';
 
 class SignOutConfirmationDialog extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
@@ -37,8 +38,8 @@ class SignOutConfirmationDialog extends StatelessWidget {
                   ? Row(children: [
                       Expanded(
                           child: InkWell(
-                        onTap: () {
-                          FirebaseAuth.instance.signOut();
+                        onTap: () async {
+                          await _auth.signOut();
                           Provider.of<SplashProvider>(context, listen: false)
                               .setPageIndex(0);
                           Provider.of<AuthProvider>(context, listen: false)
