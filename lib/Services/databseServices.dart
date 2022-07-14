@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_grocery/data/model/response/firebaseuserModel.dart';
+import 'package:akbarimandiwholesale/data/model/response/firebaseuserModel.dart';
 
 class Database {
   FirebaseFirestore firestore = FirebaseFirestore.instance;

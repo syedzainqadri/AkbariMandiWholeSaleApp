@@ -1,19 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/response_model.dart';
-import 'package:flutter_grocery/data/model/response/userinfo_model.dart';
-import 'package:flutter_grocery/helper/responsive_helper.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/provider/auth_provider.dart';
-import 'package:flutter_grocery/provider/profile_provider.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/images.dart';
-import 'package:flutter_grocery/utill/styles.dart';
-import 'package:flutter_grocery/view/base/custom_snackbar.dart';
-import 'package:flutter_grocery/view/base/main_app_bar.dart';
-import 'package:flutter_grocery/view/screens/address/addresspicker.dart';
+import 'package:akbarimandiwholesale/data/model/response/response_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/userinfo_model.dart';
+import 'package:akbarimandiwholesale/helper/responsive_helper.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/provider/auth_provider.dart';
+import 'package:akbarimandiwholesale/provider/profile_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
+import 'package:akbarimandiwholesale/view/base/custom_snackbar.dart';
+import 'package:akbarimandiwholesale/view/base/main_app_bar.dart';
+import 'package:akbarimandiwholesale/view/screens/address/addresspicker.dart';
 import 'package:provider/provider.dart';
 
 class ImagePickerScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/provider/order_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/styles.dart';
+import 'package:akbarimandiwholesale/provider/order_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
 import 'package:provider/provider.dart';
 
 class CustomCheckBox extends StatelessWidget {
@@ -25,7 +25,9 @@ class CustomCheckBox extends StatelessWidget {
             Expanded(
               child: Text(title,
                   style: poppinsRegular.copyWith(
-                    color: order.paymentMethodIndex == index ? Theme.of(context).textTheme.bodyText1.color : ColorResources.getHintColor(context),
+                    color: order.paymentMethodIndex == index
+                        ? Theme.of(context).textTheme.bodyText1.color
+                        : ColorResources.getHintColor(context),
                   )),
             ),
           ]),

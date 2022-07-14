@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/datasource/remote/dio/dio_client.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/brands_model.dart';
-import 'package:flutter_grocery/data/model/response/cart_model.dart';
-import 'package:flutter_grocery/data/model/response/category_model.dart';
-import 'package:flutter_grocery/data/model/response/product_model.dart';
-import 'package:flutter_grocery/data/repository/product_repo.dart';
-import 'package:flutter_grocery/data/repository/search_repo.dart';
-import 'package:flutter_grocery/helper/api_checker.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/dio/dio_client.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/brands_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/cart_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/category_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/data/repository/product_repo.dart';
+import 'package:akbarimandiwholesale/data/repository/search_repo.dart';
+import 'package:akbarimandiwholesale/helper/api_checker.dart';
 
 class ProductProvider extends ChangeNotifier {
   final ProductRepo productRepo;

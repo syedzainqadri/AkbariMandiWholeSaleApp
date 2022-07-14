@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
 import 'package:provider/provider.dart';
 
 class PriceConverter {

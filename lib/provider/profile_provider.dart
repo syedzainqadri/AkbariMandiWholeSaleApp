@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/response_model.dart';
-import 'package:flutter_grocery/data/model/response/userinfo_model.dart';
-import 'package:flutter_grocery/data/repository/profile_repo.dart';
-import 'package:flutter_grocery/helper/api_checker.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/response_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/userinfo_model.dart';
+import 'package:akbarimandiwholesale/data/repository/profile_repo.dart';
+import 'package:akbarimandiwholesale/helper/api_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 

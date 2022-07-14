@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/category_model.dart';
-import 'package:flutter_grocery/provider/category_provider.dart';
+import 'package:akbarimandiwholesale/data/model/response/category_model.dart';
+import 'package:akbarimandiwholesale/provider/category_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'category_on_home.dart';

@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/datasource/remote/dio/dio_client.dart';
-import 'package:flutter_grocery/data/datasource/remote/exception/api_error_handler.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/onboarding_model.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/utill/images.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/dio/dio_client.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/exception/api_error_handler.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/onboarding_model.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
 
 class OnBoardingRepo {
   final DioClient dioClient;

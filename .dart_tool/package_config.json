@@ -992,13 +992,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_grocery",
+      "name": "akbarimandiwholesale",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2022-07-14T11:06:13.672981Z",
+  "generated": "2022-07-14T16:10:16.690477Z",
   "generator": "pub",
   "generatorVersion": "2.15.0"
 }

@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/provider/auth_provider.dart';
-import 'package:flutter_grocery/provider/cart_provider.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/helper/route_helper.dart';
-import 'package:flutter_grocery/utill/app_constants.dart';
-import 'package:flutter_grocery/utill/images.dart';
-import 'package:flutter_grocery/utill/styles.dart';
-import 'package:flutter_grocery/view/screens/menu/menu_screen.dart';
-import 'package:flutter_grocery/view/screens/onboarding/on_boarding_screen.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/provider/auth_provider.dart';
+import 'package:akbarimandiwholesale/provider/cart_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/helper/route_helper.dart';
+import 'package:akbarimandiwholesale/utill/app_constants.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
+import 'package:akbarimandiwholesale/view/screens/menu/menu_screen.dart';
+import 'package:akbarimandiwholesale/view/screens/onboarding/on_boarding_screen.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {

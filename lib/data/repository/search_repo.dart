@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/datasource/remote/dio/dio_client.dart';
-import 'package:flutter_grocery/data/datasource/remote/exception/api_error_handler.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/utill/app_constants.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/dio/dio_client.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/exception/api_error_handler.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchRepo {
@@ -21,8 +20,8 @@ class SearchRepo {
     }
   }
 
-  List<String> getAllSortByList(BuildContext context){
-    List<String> _sortByList=[
+  List<String> getAllSortByList(BuildContext context) {
+    List<String> _sortByList = [
       getTranslated('low_to_high', context),
       getTranslated('high_to_low', context),
       getTranslated('ascending', context),
@@ -34,12 +33,14 @@ class SearchRepo {
   // for save home address
   Future<void> saveSearchAddress(String searchAddress) async {
     try {
-      List<String> searchKeywordList = sharedPreferences.getStringList(AppConstants.SEARCH_ADDRESS) ?? [];
+      List<String> searchKeywordList =
+          sharedPreferences.getStringList(AppConstants.SEARCH_ADDRESS) ?? [];
       if (!searchKeywordList.contains(searchAddress)) {
         searchKeywordList.add(searchAddress);
         print(searchAddress);
       }
-      await sharedPreferences.setStringList(AppConstants.SEARCH_ADDRESS, searchKeywordList);
+      await sharedPreferences.setStringList(
+          AppConstants.SEARCH_ADDRESS, searchKeywordList);
     } catch (e) {
       throw e;
     }

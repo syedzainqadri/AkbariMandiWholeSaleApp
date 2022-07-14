@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/datasource/remote/dio/dio_client.dart';
-import 'package:flutter_grocery/data/datasource/remote/exception/api_error_handler.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/utill/app_constants.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/dio/dio_client.dart';
+import 'package:akbarimandiwholesale/data/datasource/remote/exception/api_error_handler.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashRepo {
@@ -20,16 +20,16 @@ class SplashRepo {
   }
 
   Future<bool> initSharedData() {
-    if(!sharedPreferences.containsKey(AppConstants.THEME)) {
+    if (!sharedPreferences.containsKey(AppConstants.THEME)) {
       return sharedPreferences.setBool(AppConstants.THEME, false);
     }
-    if(!sharedPreferences.containsKey(AppConstants.COUNTRY_CODE)) {
+    if (!sharedPreferences.containsKey(AppConstants.COUNTRY_CODE)) {
       return sharedPreferences.setString(AppConstants.COUNTRY_CODE, 'US');
     }
-    if(!sharedPreferences.containsKey(AppConstants.LANGUAGE_CODE)) {
+    if (!sharedPreferences.containsKey(AppConstants.LANGUAGE_CODE)) {
       return sharedPreferences.setString(AppConstants.LANGUAGE_CODE, 'en');
     }
-    if(!sharedPreferences.containsKey(AppConstants.CART_LIST)) {
+    if (!sharedPreferences.containsKey(AppConstants.CART_LIST)) {
       return sharedPreferences.setStringList(AppConstants.CART_LIST, []);
     }
     return Future.value(true);

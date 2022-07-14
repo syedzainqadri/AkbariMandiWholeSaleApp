@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_grocery/provider/theme_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/styles.dart';
+import 'package:akbarimandiwholesale/provider/theme_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
 import 'package:provider/provider.dart';
 
 class IdCardInputField extends StatefulWidget {

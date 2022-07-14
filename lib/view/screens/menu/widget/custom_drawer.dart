@@ -1,7 +1,7 @@
 import 'dart:math' show pi;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_grocery/provider/localization_provider.dart';
+import 'package:akbarimandiwholesale/provider/localization_provider.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawerController {

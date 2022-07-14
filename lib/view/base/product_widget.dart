@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/cart_model.dart';
-import 'package:flutter_grocery/data/model/response/product_model.dart';
-import 'package:flutter_grocery/helper/price_converter.dart';
-import 'package:flutter_grocery/helper/route_helper.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/provider/cart_provider.dart';
-import 'package:flutter_grocery/provider/product_provider.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/images.dart';
-import 'package:flutter_grocery/utill/styles.dart';
-import 'package:flutter_grocery/view/base/custom_snackbar.dart';
-import 'package:flutter_grocery/view/screens/product/product_details_screen.dart';
+import 'package:akbarimandiwholesale/data/model/response/cart_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/helper/price_converter.dart';
+import 'package:akbarimandiwholesale/helper/route_helper.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/provider/cart_provider.dart';
+import 'package:akbarimandiwholesale/provider/product_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
+import 'package:akbarimandiwholesale/view/base/custom_snackbar.dart';
+import 'package:akbarimandiwholesale/view/screens/product/product_details_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductWidget extends StatelessWidget {

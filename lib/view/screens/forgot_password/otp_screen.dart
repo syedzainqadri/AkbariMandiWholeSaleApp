@@ -1,6 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/material.dart';
-// import 'package:flutter_grocery/view/screens/auth/create_account_screen.dart';
+// import 'package:akbarimandiwholesale/view/screens/auth/create_account_screen.dart';
 // import 'package:pinput/pin_put/pin_put.dart';
 
 // class OtpScreen extends StatefulWidget {

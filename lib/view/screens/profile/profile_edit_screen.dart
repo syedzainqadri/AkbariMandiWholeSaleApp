@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/response_model.dart';
-import 'package:flutter_grocery/data/model/response/userinfo_model.dart';
-import 'package:flutter_grocery/helper/responsive_helper.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/provider/auth_provider.dart';
-import 'package:flutter_grocery/provider/profile_provider.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/images.dart';
-import 'package:flutter_grocery/utill/styles.dart';
-import 'package:flutter_grocery/view/base/custom_snackbar.dart';
-import 'package:flutter_grocery/view/base/custom_text_field.dart';
-import 'package:flutter_grocery/view/base/main_app_bar.dart';
+import 'package:akbarimandiwholesale/data/model/response/response_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/userinfo_model.dart';
+import 'package:akbarimandiwholesale/helper/responsive_helper.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/provider/auth_provider.dart';
+import 'package:akbarimandiwholesale/provider/profile_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
+import 'package:akbarimandiwholesale/view/base/custom_snackbar.dart';
+import 'package:akbarimandiwholesale/view/base/custom_text_field.dart';
+import 'package:akbarimandiwholesale/view/base/main_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class ProfileEditScreen extends StatefulWidget {
@@ -70,20 +70,24 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).cardColor,
-      appBar: ResponsiveHelper.isDesktop(context)? MainAppBar(): AppBar(
-        backgroundColor: Theme.of(context).cardColor,
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Theme.of(context).primaryColor),
-            onPressed: () {
-              Provider.of<SplashProvider>(context, listen: false).setPageIndex(0);
-              Navigator.of(context).pop();
-            }),
-        title: Text(getTranslated('update_profile', context) ?? '',
-            style: poppinsMedium.copyWith(
-              fontSize: Dimensions.FONT_SIZE_SMALL,
-              color: Theme.of(context).textTheme.bodyText1.color,
-            )),
-      ),
+      appBar: ResponsiveHelper.isDesktop(context)
+          ? MainAppBar()
+          : AppBar(
+              backgroundColor: Theme.of(context).cardColor,
+              leading: IconButton(
+                  icon: Icon(Icons.arrow_back_ios,
+                      color: Theme.of(context).primaryColor),
+                  onPressed: () {
+                    Provider.of<SplashProvider>(context, listen: false)
+                        .setPageIndex(0);
+                    Navigator.of(context).pop();
+                  }),
+              title: Text(getTranslated('update_profile', context) ?? '',
+                  style: poppinsMedium.copyWith(
+                    fontSize: Dimensions.FONT_SIZE_SMALL,
+                    color: Theme.of(context).textTheme.bodyText1.color,
+                  )),
+            ),
       body: SafeArea(
         child: Consumer<ProfileProvider>(
           builder: (context, profileProvider, child) => Scrollbar(
@@ -101,14 +105,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         margin: EdgeInsets.only(top: 25, bottom: 24),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          border: Border.all(color: ColorResources.getGreyColor(context), width: 3),
+                          border: Border.all(
+                              color: ColorResources.getGreyColor(context),
+                              width: 3),
                           shape: BoxShape.circle,
                         ),
                         child: InkWell(
                           onTap: () {
-                            if(ResponsiveHelper.isMobilePhone()) {
+                            if (ResponsiveHelper.isMobilePhone()) {
                               profileProvider.choosePhoto();
-                            }else {
+                            } else {
                               profileProvider.pickImage();
                             }
                           },
@@ -118,17 +124,33 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
                                 child: profileProvider.file != null
-                                    ? Image.file(profileProvider.file, width: 80, height: 80, fit: BoxFit.fill) : profileProvider.data != null
-                                    ? Image.network(profileProvider.data.path, width: 80, height: 80, fit: BoxFit.fill) : ClipRRect(
-                                        borderRadius: BorderRadius.circular(50),
-                                        child: FadeInImage.assetNetwork(
-                                          placeholder: Images.placeholder,
-                                          width: 80, height: 80, fit: BoxFit.cover,
-                                          image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.customerImageUrl}'
-                                              '/${profileProvider.userInfoModel.image}',
-                                          imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, height: 80, width: 80, fit: BoxFit.cover),
-                                        ),
-                                      ),
+                                    ? Image.file(profileProvider.file,
+                                        width: 80, height: 80, fit: BoxFit.fill)
+                                    : profileProvider.data != null
+                                        ? Image.network(
+                                            profileProvider.data.path,
+                                            width: 80,
+                                            height: 80,
+                                            fit: BoxFit.fill)
+                                        : ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            child: FadeInImage.assetNetwork(
+                                              placeholder: Images.placeholder,
+                                              width: 80,
+                                              height: 80,
+                                              fit: BoxFit.cover,
+                                              image:
+                                                  '${Provider.of<SplashProvider>(context, listen: false).baseUrls.customerImageUrl}'
+                                                  '/${profileProvider.userInfoModel.image}',
+                                              imageErrorBuilder: (c, o, s) =>
+                                                  Image.asset(
+                                                      Images.placeholder,
+                                                      height: 80,
+                                                      width: 80,
+                                                      fit: BoxFit.cover),
+                                            ),
+                                          ),
                               ),
                               Positioned(
                                 bottom: 5,
@@ -156,17 +178,21 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       getTranslated('first_name', context),
                                       style: poppinsRegular.copyWith(
-                                        fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                        color: ColorResources.getHintColor(context),
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
                                       ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('enter_first_name', context),
+                                    hintText: getTranslated(
+                                        'enter_first_name', context),
                                     isElevation: false,
                                     isPadding: false,
                                     controller: _firstNameController,
@@ -175,7 +201,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                           SizedBox(height: 15),
@@ -187,18 +217,21 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       getTranslated('last_name', context),
-                                      style:
-                                          poppinsRegular.copyWith(
-                                            fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                            color: ColorResources.getHintColor(context),
-                                          ),
+                                      style: poppinsRegular.copyWith(
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
+                                      ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('enter_last_name', context),
+                                    hintText: getTranslated(
+                                        'enter_last_name', context),
                                     isElevation: false,
                                     isPadding: false,
                                     controller: _lastNameController,
@@ -207,7 +240,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                           SizedBox(height: 15),
@@ -218,17 +255,21 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       getTranslated('email', context),
                                       style: poppinsRegular.copyWith(
-                                        fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                        color: ColorResources.getHintColor(context),
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
                                       ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('enter_email_address', context),
+                                    hintText: getTranslated(
+                                        'enter_email_address', context),
                                     isElevation: false,
                                     isPadding: false,
                                     isEnabled: false,
@@ -239,7 +280,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                           SizedBox(height: 15),
@@ -250,17 +295,22 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
-                                      getTranslated('phone_number', context) ?? '',
+                                      getTranslated('phone_number', context) ??
+                                          '',
                                       style: poppinsRegular.copyWith(
-                                        fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                        color: ColorResources.getHintColor(context),
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
                                       ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('enter_phone_number', context),
+                                    hintText: getTranslated(
+                                        'enter_phone_number', context),
                                     isElevation: false,
                                     isPadding: false,
                                     controller: _phoneController,
@@ -270,7 +320,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                           SizedBox(height: 15),
@@ -281,17 +335,21 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       getTranslated('password', context) ?? '',
                                       style: poppinsRegular.copyWith(
-                                        fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                        color: ColorResources.getHintColor(context),
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
                                       ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('password_hint', context),
+                                    hintText:
+                                        getTranslated('password_hint', context),
                                     isElevation: false,
                                     isPadding: false,
                                     controller: _passwordController,
@@ -300,7 +358,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                           SizedBox(height: 15),
@@ -311,18 +373,23 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
-                                      getTranslated('confirm_password', context) ?? '',
-                                      style:
-                                      poppinsRegular.copyWith(
-                                        fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
-                                        color: ColorResources.getHintColor(context),
+                                      getTranslated(
+                                              'confirm_password', context) ??
+                                          '',
+                                      style: poppinsRegular.copyWith(
+                                        fontSize:
+                                            Dimensions.FONT_SIZE_EXTRA_SMALL,
+                                        color: ColorResources.getHintColor(
+                                            context),
                                       ),
                                     ),
                                   ),
                                   CustomTextField(
-                                    hintText: getTranslated('password_hint', context),
+                                    hintText:
+                                        getTranslated('password_hint', context),
                                     isElevation: false,
                                     isPadding: false,
                                     controller: _confirmPasswordController,
@@ -331,7 +398,11 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   ),
                                 ],
                               ),
-                              Positioned(bottom: 0, left: 20, right: 20, child: Divider()),
+                              Positioned(
+                                  bottom: 0,
+                                  left: 20,
+                                  right: 20,
+                                  child: Divider()),
                             ],
                           ),
                         ],
@@ -341,49 +412,92 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                       !profileProvider.isLoading
                           ? TextButton(
                               onPressed: () async {
-                                String _firstName = _firstNameController.text.trim();
-                                String _lastName = _lastNameController.text.trim();
-                                String _phoneNumber = _phoneController.text.trim();
-                                String _password = _passwordController.text.trim();
-                                String _confirmPassword = _confirmPasswordController.text.trim();
-                                if (profileProvider.userInfoModel.fName == _firstName &&
-                                    profileProvider.userInfoModel.lName == _lastName &&
-                                    profileProvider.userInfoModel.phone == _phoneNumber &&
-                                    profileProvider.userInfoModel.email == _emailController.text
-                                    && profileProvider.file == null && profileProvider.data == null
-                                    && _password.isEmpty && _confirmPassword.isEmpty) {
-
-                                  showCustomSnackBar(getTranslated('change_something_to_update', context), context);
-                                }else if (_firstName.isEmpty) {
-                                  showCustomSnackBar(getTranslated('enter_first_name', context), context);
-                                }else if (_lastName.isEmpty) {
-                                  showCustomSnackBar(getTranslated('enter_last_name', context), context);
-                                }else if (_phoneNumber.isEmpty) {
-                                  showCustomSnackBar(getTranslated('enter_phone_number', context), context);
-                                } else if((_password.isNotEmpty && _password.length < 6)
-                                    || (_confirmPassword.isNotEmpty && _confirmPassword.length < 6)) {
-                                  showCustomSnackBar(getTranslated('password_should_be', context), context);
-                                } else if(_password != _confirmPassword) {
-                                  showCustomSnackBar(getTranslated('password_did_not_match', context), context);
+                                String _firstName =
+                                    _firstNameController.text.trim();
+                                String _lastName =
+                                    _lastNameController.text.trim();
+                                String _phoneNumber =
+                                    _phoneController.text.trim();
+                                String _password =
+                                    _passwordController.text.trim();
+                                String _confirmPassword =
+                                    _confirmPasswordController.text.trim();
+                                if (profileProvider.userInfoModel.fName ==
+                                        _firstName &&
+                                    profileProvider.userInfoModel.lName ==
+                                        _lastName &&
+                                    profileProvider.userInfoModel.phone ==
+                                        _phoneNumber &&
+                                    profileProvider.userInfoModel.email ==
+                                        _emailController.text &&
+                                    profileProvider.file == null &&
+                                    profileProvider.data == null &&
+                                    _password.isEmpty &&
+                                    _confirmPassword.isEmpty) {
+                                  showCustomSnackBar(
+                                      getTranslated(
+                                          'change_something_to_update',
+                                          context),
+                                      context);
+                                } else if (_firstName.isEmpty) {
+                                  showCustomSnackBar(
+                                      getTranslated(
+                                          'enter_first_name', context),
+                                      context);
+                                } else if (_lastName.isEmpty) {
+                                  showCustomSnackBar(
+                                      getTranslated('enter_last_name', context),
+                                      context);
+                                } else if (_phoneNumber.isEmpty) {
+                                  showCustomSnackBar(
+                                      getTranslated(
+                                          'enter_phone_number', context),
+                                      context);
+                                } else if ((_password.isNotEmpty &&
+                                        _password.length < 6) ||
+                                    (_confirmPassword.isNotEmpty &&
+                                        _confirmPassword.length < 6)) {
+                                  showCustomSnackBar(
+                                      getTranslated(
+                                          'password_should_be', context),
+                                      context);
+                                } else if (_password != _confirmPassword) {
+                                  showCustomSnackBar(
+                                      getTranslated(
+                                          'password_did_not_match', context),
+                                      context);
                                 } else {
-                                  UserInfoModel updateUserInfoModel = profileProvider.userInfoModel;
-                                  updateUserInfoModel.fName = _firstNameController.text ?? "";
-                                  updateUserInfoModel.lName = _lastNameController.text ?? "";
-                                  updateUserInfoModel.phone = _phoneController.text ?? '';
+                                  UserInfoModel updateUserInfoModel =
+                                      profileProvider.userInfoModel;
+                                  updateUserInfoModel.fName =
+                                      _firstNameController.text ?? "";
+                                  updateUserInfoModel.lName =
+                                      _lastNameController.text ?? "";
+                                  updateUserInfoModel.phone =
+                                      _phoneController.text ?? '';
 
-                                  ResponseModel _responseModel = await profileProvider.updateUserInfo(
+                                  ResponseModel _responseModel =
+                                      await profileProvider.updateUserInfo(
                                     updateUserInfoModel,
-                                    profileProvider.file, profileProvider.data,
-                                    Provider.of<AuthProvider>(context, listen: false).getUserToken(),
+                                    profileProvider.file,
+                                    profileProvider.data,
+                                    Provider.of<AuthProvider>(context,
+                                            listen: false)
+                                        .getUserToken(),
                                   );
                                   if (_responseModel.isSuccess) {
                                     profileProvider.getUserInfo(context);
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                      content: Text(getTranslated('updated_successfully', context)), backgroundColor: Colors.green,
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(getTranslated(
+                                          'updated_successfully', context)),
+                                      backgroundColor: Colors.green,
                                     ));
                                   } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                      content: Text(_responseModel.message), backgroundColor: Colors.red,
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(_responseModel.message),
+                                      backgroundColor: Colors.red,
                                     ));
                                   }
                                   setState(() {});
@@ -407,7 +521,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 ),
                               ),
                             )
-                          : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor))),
+                          : Center(
+                              child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Theme.of(context).primaryColor))),
                     ],
                   ),
                 ),

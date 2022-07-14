@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-import 'package:flutter_grocery/main.dart';
+import 'package:akbarimandiwholesale/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

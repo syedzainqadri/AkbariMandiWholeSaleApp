@@ -1,5 +1,5 @@
-import 'package:flutter_grocery/data/model/response/product_model.dart';
-import 'package:flutter_grocery/data/model/response/userinfo_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/userinfo_model.dart';
 
 class OrderModel {
   int _id;
@@ -31,31 +31,31 @@ class OrderModel {
 
   OrderModel(
       {int id,
-        int userId,
-        double orderAmount,
-        double couponDiscountAmount,
-        String couponDiscountTitle,
-        String paymentStatus,
-        String orderStatus,
-        double totalTaxAmount,
-        String paymentMethod,
-        String transactionReference,
-        int deliveryAddressId,
-        String createdAt,
-        String updatedAt,
-        int checked,
-        int deliveryManId,
-        double deliveryCharge,
-        String orderNote,
-        String couponCode,
-        String orderType,
-        int branchId,
-        int timeSlotId,
-        String date,
-        String deliveryDate,
-        int detailsCount,
-        UserInfoModel customer,
-        DeliveryMan deliveryMan}) {
+      int userId,
+      double orderAmount,
+      double couponDiscountAmount,
+      String couponDiscountTitle,
+      String paymentStatus,
+      String orderStatus,
+      double totalTaxAmount,
+      String paymentMethod,
+      String transactionReference,
+      int deliveryAddressId,
+      String createdAt,
+      String updatedAt,
+      int checked,
+      int deliveryManId,
+      double deliveryCharge,
+      String orderNote,
+      String couponCode,
+      String orderType,
+      int branchId,
+      int timeSlotId,
+      String date,
+      String deliveryDate,
+      int detailsCount,
+      UserInfoModel customer,
+      DeliveryMan deliveryMan}) {
     this._id = id;
     this._userId = userId;
     this._orderAmount = orderAmount;
@@ -98,6 +98,7 @@ class OrderModel {
   set paymentMethod(String value) {
     _paymentMethod = value;
   }
+
   String get transactionReference => _transactionReference;
   int get deliveryAddressId => _deliveryAddressId;
   String get createdAt => _createdAt;
@@ -204,20 +205,20 @@ class DeliveryMan {
 
   DeliveryMan(
       {int id,
-        String fName,
-        String lName,
-        String phone,
-        String email,
-        String identityNumber,
-        String identityType,
-        String identityImage,
-        String image,
-        String password,
-        String createdAt,
-        String updatedAt,
-        String authToken,
-        String fcmToken,
-        List<Rating> rating}) {
+      String fName,
+      String lName,
+      String phone,
+      String email,
+      String identityNumber,
+      String identityType,
+      String identityImage,
+      String image,
+      String password,
+      String createdAt,
+      String updatedAt,
+      String authToken,
+      String fcmToken,
+      List<Rating> rating}) {
     this._id = id;
     this._fName = fName;
     this._lName = lName;

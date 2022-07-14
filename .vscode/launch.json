@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "web-mobileapp",
+            "name": "AkbariMandiWholeSale",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "web-mobileapp (profile mode)",
+            "name": "AkbariMandiWholeSale (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "web-mobileapp (release mode)",
+            "name": "AkbariMandiWholeSale (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

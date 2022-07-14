@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/banner_model.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/product_model.dart';
-import 'package:flutter_grocery/data/repository/banner_repo.dart';
-import 'package:flutter_grocery/helper/api_checker.dart';
+import 'package:akbarimandiwholesale/data/model/response/banner_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/data/repository/banner_repo.dart';
+import 'package:akbarimandiwholesale/helper/api_checker.dart';
 
 class BannerProvider extends ChangeNotifier {
   final BannerRepo bannerRepo;

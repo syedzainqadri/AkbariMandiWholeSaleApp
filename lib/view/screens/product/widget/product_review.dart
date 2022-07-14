@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/review_model.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/utill/color_resources.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/images.dart';
-import 'package:flutter_grocery/utill/styles.dart';
+import 'package:akbarimandiwholesale/data/model/response/review_model.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/utill/color_resources.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
+import 'package:akbarimandiwholesale/utill/styles.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
@@ -25,17 +25,24 @@ class ReviewWidget extends StatelessWidget {
         Row(children: [
           ClipOval(
             child: FadeInImage.assetNetwork(
-              image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.customerImageUrl}/${reviewModel.customer.image}',
+              image:
+                  '${Provider.of<SplashProvider>(context, listen: false).baseUrls.customerImageUrl}/${reviewModel.customer.image}',
               placeholder: Images.placeholder,
-              width: 30, height: 30, fit: BoxFit.cover,
-              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, height: 30, width: 30, fit: BoxFit.cover),
+              width: 30,
+              height: 30,
+              fit: BoxFit.cover,
+              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder,
+                  height: 30, width: 30, fit: BoxFit.cover),
             ),
           ),
           SizedBox(width: 5),
-          Expanded(child: Text(
+          Expanded(
+              child: Text(
             '${reviewModel.customer.fName} ${reviewModel.customer.lName}',
-            style: poppinsRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE),
-            maxLines: 1, overflow: TextOverflow.ellipsis,
+            style:
+                poppinsRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           )),
           SizedBox(width: 5),
           Icon(Icons.star, color: Theme.of(context).primaryColor, size: 18),
@@ -64,7 +71,11 @@ class ReviewShimmer extends StatelessWidget {
         enabled: true,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
-            Container(height: 30, width: 30, decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
+            Container(
+                height: 30,
+                width: 30,
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
             SizedBox(width: 5),
             Container(height: 15, width: 100, color: Colors.white),
             Expanded(child: SizedBox()),
@@ -73,12 +84,17 @@ class ReviewShimmer extends StatelessWidget {
             Container(height: 15, width: 20, color: Colors.white),
           ]),
           SizedBox(height: 5),
-          Container(height: 15, width: MediaQuery.of(context).size.width, color: Colors.white),
+          Container(
+              height: 15,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white),
           SizedBox(height: 3),
-          Container(height: 15, width: MediaQuery.of(context).size.width, color: Colors.white),
+          Container(
+              height: 15,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.white),
         ]),
       ),
     );
   }
 }
-

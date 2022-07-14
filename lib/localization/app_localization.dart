@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_grocery/utill/app_constants.dart';
+import 'package:akbarimandiwholesale/utill/app_constants.dart';
 
 class AppLocalization {
   AppLocalization(this.locale);
@@ -16,19 +16,23 @@ class AppLocalization {
   Map<String, String> _localizedValues;
 
   Future<void> load() async {
-    String jsonStringValues = await rootBundle.loadString('assets/language/${locale.languageCode}.json');
+    String jsonStringValues = await rootBundle
+        .loadString('assets/language/${locale.languageCode}.json');
     Map<String, dynamic> mappedJson = json.decode(jsonStringValues);
-    _localizedValues = mappedJson.map((key, value) => MapEntry(key, value.toString()));
+    _localizedValues =
+        mappedJson.map((key, value) => MapEntry(key, value.toString()));
   }
 
   String translate(String key) {
     return _localizedValues[key];
   }
 
-  static const LocalizationsDelegate<AppLocalization> delegate = _DemoLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalization> delegate =
+      _DemoLocalizationsDelegate();
 }
 
-class _DemoLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
+class _DemoLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalization> {
   const _DemoLocalizationsDelegate();
 
   @override

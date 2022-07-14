@@ -1,4 +1,4 @@
-import 'package:flutter_grocery/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
 
 class BannerTwoModel {
   int _id;

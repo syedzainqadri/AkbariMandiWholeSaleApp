@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/brands_model.dart';
-import 'package:flutter_grocery/data/model/response/category_model.dart';
-import 'package:flutter_grocery/data/model/response/product_model.dart';
-import 'package:flutter_grocery/data/repository/category_repo.dart';
-import 'package:flutter_grocery/helper/api_checker.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/brands_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/category_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/product_model.dart';
+import 'package:akbarimandiwholesale/data/repository/category_repo.dart';
+import 'package:akbarimandiwholesale/helper/api_checker.dart';
 
 class CategoryProvider extends ChangeNotifier {
   final CategoryRepo categoryRepo;

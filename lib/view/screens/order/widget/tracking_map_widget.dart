@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_grocery/data/model/response/address_model.dart';
-import 'package:flutter_grocery/data/model/response/config_model.dart';
-import 'package:flutter_grocery/helper/responsive_helper.dart';
-import 'package:flutter_grocery/localization/language_constrants.dart';
-import 'package:flutter_grocery/provider/order_provider.dart';
-import 'package:flutter_grocery/provider/splash_provider.dart';
-import 'package:flutter_grocery/utill/dimensions.dart';
-import 'package:flutter_grocery/utill/images.dart';
+import 'package:akbarimandiwholesale/data/model/response/address_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/config_model.dart';
+import 'package:akbarimandiwholesale/helper/responsive_helper.dart';
+import 'package:akbarimandiwholesale/localization/language_constrants.dart';
+import 'package:akbarimandiwholesale/provider/order_provider.dart';
+import 'package:akbarimandiwholesale/provider/splash_provider.dart';
+import 'package:akbarimandiwholesale/utill/dimensions.dart';
+import 'package:akbarimandiwholesale/utill/images.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_grocery/data/model/response/delivery_man_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/delivery_man_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dart:collection';
@@ -22,7 +22,11 @@ class TrackingMapWidget extends StatefulWidget {
   final String orderID;
   final int branchID;
   final AddressModel addressModel;
-  TrackingMapWidget({@required this.deliveryManModel, @required this.orderID, @required this.addressModel, @required this.branchID});
+  TrackingMapWidget(
+      {@required this.deliveryManModel,
+      @required this.orderID,
+      @required this.addressModel,
+      @required this.branchID});
 
   @override
   _TrackingMapWidgetState createState() => _TrackingMapWidgetState();
@@ -41,15 +45,23 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
     super.initState();
 
     LatLng _branch;
-    for(Branches branch in Provider.of<SplashProvider>(context, listen: false).configModel.branches) {
-      if(branch.id == widget.branchID) {
-        _branch = LatLng(double.parse(branch.latitude), double.parse(branch.longitude));
+    for (Branches branch in Provider.of<SplashProvider>(context, listen: false)
+        .configModel
+        .branches) {
+      if (branch.id == widget.branchID) {
+        _branch = LatLng(
+            double.parse(branch.latitude), double.parse(branch.longitude));
         break;
       }
     }
     _deliveryBoyLatLng = widget.deliveryManModel != null
-        ? LatLng(double.parse(widget.deliveryManModel.latitude ?? '0'), double.parse(widget.deliveryManModel.longitude ?? '0')) : LatLng(0, 0);
-    _addressLatLng = widget.addressModel != null ? LatLng(double.parse(widget.addressModel.latitude), double.parse(widget.addressModel.longitude)) : LatLng(0,0);
+        ? LatLng(double.parse(widget.deliveryManModel.latitude ?? '0'),
+            double.parse(widget.deliveryManModel.longitude ?? '0'))
+        : LatLng(0, 0);
+    _addressLatLng = widget.addressModel != null
+        ? LatLng(double.parse(widget.addressModel.latitude),
+            double.parse(widget.addressModel.longitude))
+        : LatLng(0, 0);
     _restaurantLatLng = _branch;
   }
 
@@ -63,7 +75,8 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200, width: MediaQuery.of(context).size.width - 100,
+      height: 200,
+      width: MediaQuery.of(context).size.width - 100,
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
       alignment: Alignment.center,
@@ -71,60 +84,74 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: widget.deliveryManModel.latitude != null ? Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: CameraPosition(target: _addressLatLng, zoom: 18),
-            zoomControlsEnabled: true,
-            markers: _markers,
-            onMapCreated: (GoogleMapController controller) {
-              _controller = controller;
-              _isLoading = false;
-              setMarker();
-            },
-            onTap: (latLng) async {
-              await Provider.of<OrderProvider>(context, listen: false).getDeliveryManData(widget.orderID, context);
-              String url ='https://www.google.com/maps/dir/?api=1&origin=${widget.deliveryManModel.latitude},${widget.deliveryManModel.longitude}'
-                  '&destination=${_addressLatLng.latitude},${_addressLatLng.longitude}&mode=d';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-
-          _isLoading ? Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor))) : SizedBox(),
-        ],
-      ) : Text(getTranslated('no_delivery_man_data_found', context)),
+      child: widget.deliveryManModel.latitude != null
+          ? Stack(
+              children: [
+                GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition:
+                      CameraPosition(target: _addressLatLng, zoom: 18),
+                  zoomControlsEnabled: true,
+                  markers: _markers,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller = controller;
+                    _isLoading = false;
+                    setMarker();
+                  },
+                  onTap: (latLng) async {
+                    await Provider.of<OrderProvider>(context, listen: false)
+                        .getDeliveryManData(widget.orderID, context);
+                    String url =
+                        'https://www.google.com/maps/dir/?api=1&origin=${widget.deliveryManModel.latitude},${widget.deliveryManModel.longitude}'
+                        '&destination=${_addressLatLng.latitude},${_addressLatLng.longitude}&mode=d';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                ),
+                _isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor)))
+                    : SizedBox(),
+              ],
+            )
+          : Text(getTranslated('no_delivery_man_data_found', context)),
     );
   }
 
   void setMarker() async {
-    Uint8List restaurantImageData = await convertAssetToUnit8List(Images.restaurant_marker, width: 50);
-    Uint8List deliveryBoyImageData = await convertAssetToUnit8List(Images.delivery_boy_marker, width: 50);
-    Uint8List destinationImageData = await convertAssetToUnit8List(Images.destination_marker, width: 50);
+    Uint8List restaurantImageData =
+        await convertAssetToUnit8List(Images.restaurant_marker, width: 50);
+    Uint8List deliveryBoyImageData =
+        await convertAssetToUnit8List(Images.delivery_boy_marker, width: 50);
+    Uint8List destinationImageData =
+        await convertAssetToUnit8List(Images.destination_marker, width: 50);
 
     // Animate to coordinate
     LatLngBounds bounds;
     double _rotation = 0;
-    if(_controller != null) {
+    if (_controller != null) {
       if (_addressLatLng.latitude < _restaurantLatLng.latitude) {
-        bounds = LatLngBounds(southwest: _addressLatLng, northeast: _restaurantLatLng);
+        bounds = LatLngBounds(
+            southwest: _addressLatLng, northeast: _restaurantLatLng);
         _rotation = 0;
-      }else {
-        bounds = LatLngBounds(southwest: _restaurantLatLng, northeast: _addressLatLng);
+      } else {
+        bounds = LatLngBounds(
+            southwest: _restaurantLatLng, northeast: _addressLatLng);
         _rotation = 180;
       }
     }
     LatLng centerBounds = LatLng(
-        (bounds.northeast.latitude + bounds.southwest.latitude)/2,
-        (bounds.northeast.longitude + bounds.southwest.longitude)/2
-    );
+        (bounds.northeast.latitude + bounds.southwest.latitude) / 2,
+        (bounds.northeast.longitude + bounds.southwest.longitude) / 2);
 
-    _controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(target: centerBounds, zoom: 17)));
-    if(ResponsiveHelper.isMobilePhone()) {
+    _controller.moveCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: centerBounds, zoom: 17)));
+    if (ResponsiveHelper.isMobilePhone()) {
       zoomToFit(_controller, bounds, centerBounds);
     }
 
@@ -145,30 +172,35 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
       position: _restaurantLatLng,
       infoWindow: InfoWindow(
         title: 'Restaurant',
-        snippet: '${_restaurantLatLng.latitude}, ${_restaurantLatLng.longitude}',
+        snippet:
+            '${_restaurantLatLng.latitude}, ${_restaurantLatLng.longitude}',
       ),
       icon: BitmapDescriptor.fromBytes(restaurantImageData),
     ));
-    widget.deliveryManModel.latitude != null ? _markers.add(Marker(
-      markerId: MarkerId('delivery_boy'),
-      position: _deliveryBoyLatLng,
-      infoWindow: InfoWindow(
-        title: 'Delivery Man',
-        snippet: '${_deliveryBoyLatLng.latitude}, ${_deliveryBoyLatLng.longitude}',
-      ),
-      rotation: _rotation,
-      icon: BitmapDescriptor.fromBytes(deliveryBoyImageData),
-    )) : SizedBox();
+    widget.deliveryManModel.latitude != null
+        ? _markers.add(Marker(
+            markerId: MarkerId('delivery_boy'),
+            position: _deliveryBoyLatLng,
+            infoWindow: InfoWindow(
+              title: 'Delivery Man',
+              snippet:
+                  '${_deliveryBoyLatLng.latitude}, ${_deliveryBoyLatLng.longitude}',
+            ),
+            rotation: _rotation,
+            icon: BitmapDescriptor.fromBytes(deliveryBoyImageData),
+          ))
+        : SizedBox();
 
     setState(() {});
   }
 
-  Future<void> zoomToFit(GoogleMapController controller, LatLngBounds bounds, LatLng centerBounds) async {
+  Future<void> zoomToFit(GoogleMapController controller, LatLngBounds bounds,
+      LatLng centerBounds) async {
     bool keepZoomingOut = true;
 
-    while(keepZoomingOut) {
+    while (keepZoomingOut) {
       final LatLngBounds screenBounds = await controller.getVisibleRegion();
-      if(fits(bounds, screenBounds)){
+      if (fits(bounds, screenBounds)) {
         keepZoomingOut = false;
         final double zoomLevel = await controller.getZoomLevel() - 0.5;
         controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
@@ -176,8 +208,7 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
           zoom: zoomLevel,
         )));
         break;
-      }
-      else {
+      } else {
         // Zooming out by 0.1 zoom level per iteration
         final double zoomLevel = await controller.getZoomLevel() - 0.1;
         controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
@@ -189,19 +220,30 @@ class _TrackingMapWidgetState extends State<TrackingMapWidget> {
   }
 
   bool fits(LatLngBounds fitBounds, LatLngBounds screenBounds) {
-    final bool northEastLatitudeCheck = screenBounds.northeast.latitude >= fitBounds.northeast.latitude;
-    final bool northEastLongitudeCheck = screenBounds.northeast.longitude >= fitBounds.northeast.longitude;
+    final bool northEastLatitudeCheck =
+        screenBounds.northeast.latitude >= fitBounds.northeast.latitude;
+    final bool northEastLongitudeCheck =
+        screenBounds.northeast.longitude >= fitBounds.northeast.longitude;
 
-    final bool southWestLatitudeCheck = screenBounds.southwest.latitude <= fitBounds.southwest.latitude;
-    final bool southWestLongitudeCheck = screenBounds.southwest.longitude <= fitBounds.southwest.longitude;
+    final bool southWestLatitudeCheck =
+        screenBounds.southwest.latitude <= fitBounds.southwest.latitude;
+    final bool southWestLongitudeCheck =
+        screenBounds.southwest.longitude <= fitBounds.southwest.longitude;
 
-    return northEastLatitudeCheck && northEastLongitudeCheck && southWestLatitudeCheck && southWestLongitudeCheck;
+    return northEastLatitudeCheck &&
+        northEastLongitudeCheck &&
+        southWestLatitudeCheck &&
+        southWestLongitudeCheck;
   }
 
-  Future<Uint8List> convertAssetToUnit8List(String imagePath, {int width = 50}) async {
+  Future<Uint8List> convertAssetToUnit8List(String imagePath,
+      {int width = 50}) async {
     ByteData data = await rootBundle.load(imagePath);
-    Codec codec = await instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    Codec codec = await instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
     FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ImageByteFormat.png)).buffer.asUint8List();
+    return (await fi.image.toByteData(format: ImageByteFormat.png))
+        .buffer
+        .asUint8List();
   }
 }

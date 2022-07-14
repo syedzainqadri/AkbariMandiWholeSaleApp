@@ -1,9 +1,9 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_grocery/helper/responsive_helper.dart';
-import 'package:flutter_grocery/view/base/main_app_bar.dart';
-import 'package:flutter_grocery/view/screens/auth/create_account_screen.dart';
+import 'package:akbarimandiwholesale/helper/responsive_helper.dart';
+import 'package:akbarimandiwholesale/view/base/main_app_bar.dart';
+import 'package:akbarimandiwholesale/view/screens/auth/create_account_screen.dart';
 
 class OnShopScreen extends StatelessWidget {
   var phone;

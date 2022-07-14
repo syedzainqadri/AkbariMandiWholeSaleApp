@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_grocery/data/model/response/base/api_response.dart';
-import 'package:flutter_grocery/data/model/response/base/error_response.dart';
-import 'package:flutter_grocery/data/model/response/response_model.dart';
-import 'package:flutter_grocery/data/model/response/signup_model.dart';
-import 'package:flutter_grocery/data/repository/auth_repo.dart';
-import 'package:flutter_grocery/utill/app_constants.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/api_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/base/error_response.dart';
+import 'package:akbarimandiwholesale/data/model/response/response_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/signup_model.dart';
+import 'package:akbarimandiwholesale/data/repository/auth_repo.dart';
+import 'package:akbarimandiwholesale/utill/app_constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 

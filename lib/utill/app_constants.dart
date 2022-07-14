@@ -1,4 +1,4 @@
-import 'package:flutter_grocery/data/model/response/language_model.dart';
+import 'package:akbarimandiwholesale/data/model/response/language_model.dart';
 
 class AppConstants {
   static const String APP_NAME = 'اکبری منڈی ہول سیل';
