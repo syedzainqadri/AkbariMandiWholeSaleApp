@@ -11,20 +11,22 @@ class UserInfoModel {
   String emailVerificationToken;
   String phone;
   String cmFirebaseToken;
+  int isActive;
 
   UserInfoModel(
       {this.id,
-        this.fName,
-        this.lName,
-        this.email,
-        this.image,
-        this.isPhoneVerified,
-        this.emailVerifiedAt,
-        this.createdAt,
-        this.updatedAt,
-        this.emailVerificationToken,
-        this.phone,
-        this.cmFirebaseToken});
+      this.fName,
+      this.lName,
+      this.email,
+      this.image,
+      this.isPhoneVerified,
+      this.emailVerifiedAt,
+      this.createdAt,
+      this.updatedAt,
+      this.emailVerificationToken,
+      this.phone,
+      this.cmFirebaseToken,
+      this.isActive});
 
   UserInfoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -39,6 +41,7 @@ class UserInfoModel {
     emailVerificationToken = json['email_verification_token'];
     phone = json['phone'];
     cmFirebaseToken = json['cm_firebase_token'];
+    isActive = json['is_active'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +58,7 @@ class UserInfoModel {
     data['email_verification_token'] = this.emailVerificationToken;
     data['phone'] = this.phone;
     data['cm_firebase_token'] = this.cmFirebaseToken;
+    data['is_active'] = this.isActive;
     return data;
   }
 }

@@ -1,3 +1,5 @@
+import 'package:akbarimandiwholesale/data/model/response/userinfo_model.dart';
+import 'package:akbarimandiwholesale/provider/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:akbarimandiwholesale/helper/product_type.dart';
 import 'package:akbarimandiwholesale/helper/responsive_helper.dart';
@@ -27,6 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
+  bool isActive = true;
   Future<void> _loadData(BuildContext context, bool reload) async {
     await Provider.of<CategoryProvider>(context, listen: false).getCategoryList(
       context,
@@ -35,8 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
           .languageCode,
       reload,
     );
-    // await Provider.of<BannerProvider>(context, listen: false)
-    //     .getBannerList(context, reload);
     await Provider.of<BannerTwoProvider>(context, listen: false)
         .getBannerTwoList(context, reload);
     await Provider.of<ProductProvider>(context, listen: false).getDailyItemList(
@@ -46,40 +47,30 @@ class _HomeScreenState extends State<HomeScreen> {
           .locale
           .languageCode,
     );
-    // await Provider.of<CategoryProvider>(context, listen: false).getBrands(
-    //   context,
-    // );
-    // await Provider.of<ProductProvider>(context, listen: false).getFreshItemList(
-    //   context,
-    //   reload,
-    //   Provider.of<LocalizationProvider>(context, listen: false)
-    //       .locale
-    //       .languageCode,
-    // );
-    // await Provider.of<ProductProvider>(context, listen: false).getAmsItemList(
-    //   context,
-    //   reload,
-    //   Provider.of<LocalizationProvider>(context, listen: false)
-    //       .locale
-    //       .languageCode,
-    // );
-    // Provider.of<ProductProvider>(context, listen: false).getPopularProductList(
-    //   context,
-    //   '1',
-    //   reload,
-    //   Provider.of<LocalizationProvider>(context, listen: false)
-    //       .locale
-    //       .languageCode,
-    // );
-
+    await Provider.of<ProfileProvider>(context, listen: false)
+        .getUserInfo(context);
     setState(() {
       isLoading = false;
     });
   }
 
+  Future<void> getActiveStatus() async {
+    await Provider.of<ProfileProvider>(context, listen: false)
+        .getUserInfo(context);
+    if (Provider.of<ProfileProvider>(context, listen: false)
+            .userInfoModel
+            .isActive ==
+        0) {
+      setState(() {
+        isActive = false;
+      });
+    }
+  }
+
   @override
   void initState() {
     _loadData(context, false);
+    getActiveStatus();
     super.initState();
   }
 
@@ -94,52 +85,57 @@ class _HomeScreenState extends State<HomeScreen> {
         await _loadData(context, true);
       },
       backgroundColor: Theme.of(context).primaryColor,
-      child: Scaffold(
-        appBar: ResponsiveHelper.isDesktop(context) ? MainAppBar() : null,
-        body: Scrollbar(
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Center(
-              child: SizedBox(
-                width: 1170,
-                child: Column(children: [
-                  BannerTwoView(),
-                  // Category
-                  CategoryView(),
-                  // Banner Two
-
-                  // daily item view
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 12.0),
-                  //   child: DailyItemView(),
-                  // ),
-                  // Ams Item View
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 12.0),
-                  //   child: AmsItemView(),
-                  // ),
-                  // Fresh Items
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 12.0),
-                  //   child: FreshItemView(),
-                  // ),
-                  //All Categories with sub Categories
-                  // CatwithSubCatonHome(),
-                  // Popular Item
-                  // Padding(
-                  //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                  //   child: TitleWidget(
-                  //       title: getTranslated('popular_item', context)),
-                  // ),
-                  // ProductView(
-                  //     productType: ProductType.POPULAR_PRODUCT,
-                  //     scrollController: _scrollController2),
-                ]),
+      child: isActive == true
+          ? Scaffold(
+              appBar: ResponsiveHelper.isDesktop(context) ? MainAppBar() : null,
+              body: Scrollbar(
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Center(
+                    child: SizedBox(
+                      width: 1170,
+                      child: Column(children: [
+                        BannerTwoView(),
+                        CategoryView(),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          : Scaffold(
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'جوائن کرنے کا شکریہ',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                      child: Text('براے مہربانی انتظار کیجیے',
+                          style: TextStyle(fontSize: 20))),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                      child: Text('آپکا اکاؤنٹ رویو کیا جا رہا ہے',
+                          style: TextStyle(fontSize: 20))),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                      child: Text('آپسے جلد رابطہ کیا جائے گا',
+                          style: TextStyle(fontSize: 20))),
+                ],
               ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
