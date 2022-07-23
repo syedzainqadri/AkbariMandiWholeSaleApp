@@ -172,13 +172,6 @@ class _OtpScreenFromLoginState extends State<OtpScreenFromLogin> {
           await FirebaseAuth.instance
               .signInWithCredential(credential)
               .then((value) async {
-            // if (value.user != null) {
-            // await Database().getFcmToken(value.user.uid).then((value) {
-            //   setState(() {
-            //     _token = value;
-            //   });
-            //   print('token upon login is: $_token');
-            // });
             if (value.user != null) {
               await Provider.of<AuthProvider>(context, listen: false)
                   .loginWithFirebase(value.user.uid)
