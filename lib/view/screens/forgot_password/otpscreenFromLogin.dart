@@ -54,7 +54,7 @@ class _OtpScreenFromLoginState extends State<OtpScreenFromLogin> {
     if (!mounted) return;
     setState(() {
       _comingSms = comingSms;
-      print("====>Message: ${_comingSms}");
+      print("====>Message: $_comingSms");
       print("${_comingSms[1]}");
       textEditingController1.text = _comingSms[0] +
           _comingSms[1] +
@@ -153,6 +153,7 @@ class _OtpScreenFromLoginState extends State<OtpScreenFromLogin> {
                     }
                   });
                 } catch (e) {
+                  print(e.toString());
                   FocusScope.of(context).unfocus();
                   _scaffoldkey.currentState.showSnackBar(
                       SnackBar(content: Text('Please Enter A Valid OTP')));
