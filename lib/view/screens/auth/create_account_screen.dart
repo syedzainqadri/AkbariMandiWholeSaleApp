@@ -125,26 +125,26 @@ class CreateAccountScreen extends StatelessWidget {
                         inputType: TextInputType.name,
                         capitalization: TextCapitalization.words,
                       ),
-                      SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+                      // SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                       // for last name section
-                      Text(
-                        'شناختی کارڈ نمبر',
-                        style: poppinsRegular.copyWith(
-                            color: ColorResources.getHintColor(context)),
-                      ),
-                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                      IdCardInputField(
-                        hintText: 'شناختی کارڈ نمبر درج کیجیے',
-                        isShowBorder: true,
-                        controller: _cnicController,
-                        focusNode: _cnicFocus,
-                        nextFocus: _numberFocus,
-                        inputType: TextInputType.number,
-                        onChanged: (value) {
-                          cnic = value;
-                        },
-                      ),
+                      // Text(
+                      //   'شناختی کارڈ نمبر',
+                      //   style: poppinsRegular.copyWith(
+                      //       color: ColorResources.getHintColor(context)),
+                      // ),
+                      // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                      // IdCardInputField(
+                      //   hintText: 'شناختی کارڈ نمبر درج کیجیے',
+                      //   isShowBorder: true,
+                      //   controller: _cnicController,
+                      //   focusNode: _cnicFocus,
+                      //   nextFocus: _numberFocus,
+                      //   inputType: TextInputType.number,
+                      //   onChanged: (value) {
+                      //     cnic = value;
+                      //   },
+                      // ),
                       // Container(
                       //   height: 50,
                       //   decoration: BoxDecoration(
@@ -246,8 +246,8 @@ class CreateAccountScreen extends StatelessWidget {
                           ? CustomButton(
                               buttonText: getTranslated('signup', context),
                               onPressed: () {
-                                String _cnic = cnic;
-                                print('cnic is : $_cnic');
+                                // String _cnic = cnic;
+                                // print('cnic is : $_cnic');
                                 String _firstName =
                                     _firstNameController.text.trim();
                                 String _lastName =
@@ -292,16 +292,16 @@ class CreateAccountScreen extends StatelessWidget {
                                         getTranslated(
                                             'password_did_not_match', context),
                                         context);
-                                  } else if (_cnic.isEmpty) {
-                                    showCustomSnackBar(
-                                        'Please enter CNIC', context);
+                                    // } else if (_cnic.isEmpty) {
+                                    //   showCustomSnackBar(
+                                    //       'Please enter CNIC', context);
                                   } else {
                                     SignUpModel signUpModel = SignUpModel(
                                       fName: _firstName,
                                       lName: _lastName,
                                       password: _password,
                                       phone: this.phone,
-                                      cnic: _cnic,
+                                      // cnic: _cnic,
                                     );
                                     print(
                                         'cnic in model is: ${signUpModel.cnic}');
@@ -334,14 +334,14 @@ class CreateAccountScreen extends StatelessWidget {
                                   } else if (_lastName.isEmpty) {
                                     showCustomSnackBar(
                                         'دکان کا نام درج کریں', context);
-                                  } else if (_cnic.isEmpty) {
-                                    showCustomSnackBar(
-                                        'شناختی کارڈ کا نمبر درج کریں',
-                                        context);
-                                  } else if (_cnic.length != 15) {
-                                    showCustomSnackBar(
-                                        'شناختی کارڈ کا نمبر 13 رقمی نہیں ہے',
-                                        context);
+                                    // } else if (_cnic.isEmpty) {
+                                    //   showCustomSnackBar(
+                                    //       'شناختی کارڈ کا نمبر درج کریں',
+                                    //       context);
+                                    // } else if (_cnic.length != 15) {
+                                    //   showCustomSnackBar(
+                                    //       'شناختی کارڈ کا نمبر 13 رقمی نہیں ہے',
+                                    //       context);
                                   } else if (_password.isEmpty) {
                                     showCustomSnackBar(
                                         getTranslated(
@@ -372,7 +372,7 @@ class CreateAccountScreen extends StatelessWidget {
                                       email: _number,
                                       password: _password,
                                       phone: authProvider.email.trim(),
-                                      cnic: _cnic,
+                                      // cnic: _cnic,
                                     );
                                     authProvider
                                         .registration(signUpModel, id)
